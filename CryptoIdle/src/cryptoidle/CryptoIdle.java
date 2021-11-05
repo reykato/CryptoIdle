@@ -8,6 +8,6 @@ package cryptoidle;
 
 public class CryptoIdle {
     public static void main(String[] args) {
-        // TODO code application logic here
-    }    
+        // testing push author functionality
+    }
 }
