@@ -1,5 +1,6 @@
 /*
 Tyler Lindsay
+Nicholas Saylor
 Crypto Idle
 2021-11-5
 Main class 
