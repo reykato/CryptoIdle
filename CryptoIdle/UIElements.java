@@ -32,7 +32,7 @@ public class UIElements extends JFrame {
         // Frame attributes
         JFrame frame = new JFrame("CryptoIdle");
         frame.setSize(330, 600);
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new GridLayout(7,0));
         frame.setVisible(true);
         Font dispFont = new Font("Arial", Font.BOLD, 30);

@@ -22,9 +22,11 @@ public class CryptoIdle {
             SaveHandler load = new SaveHandler();
             upgdArr = load.getUpgrades();
             balance = load.getBalance();
+            System.out.printf("Successfully loaded save!\n");
         }
         catch (IOException e){
             // Default load values
+            System.out.printf("No save found, creating new save.\n");
             balance = 1000;
             upgdArr[0] = new Upgrade(1.07, 10, 1, 0, "Mediocre Mining Rig");
             upgdArr[1] = new Upgrade(1.07, 200, 5, 0, "Basic Mining Rig");
@@ -39,7 +41,18 @@ public class CryptoIdle {
             e.printStackTrace();
         }
         
+        
+        
         // Takes loaded in values and displays in UI
         UIElements a = new UIElements(upgdArr, balance);
+        
+        // TODO: Add the following code to a window listener upon close
+        try {
+            SaveHandler save = new SaveHandler(upgdArr, balance);
+            System.out.printf("Successfully implemented save\n");
+        }
+        catch (Exception e){
+            System.out.printf("Error! Save file could not be created! Please make sure that folder is not read-only.\n");
+        }
     }
 }

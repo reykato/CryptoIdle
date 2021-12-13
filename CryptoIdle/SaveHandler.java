@@ -14,9 +14,17 @@ public class SaveHandler{
     private File save = new File("save.txt");
     
     // Save functionality
-    public SaveHandler(Upgrade upgrades[], double balance){
+    public SaveHandler(Upgrade upgrades[], double balance) throws FileNotFoundException{
        this.upgrades = upgrades;
        this.balance = balance;
+       PrintWriter output = new PrintWriter(save);
+       output.printf("%d\n", System.currentTimeMillis());
+       output.printf("%.2f\n", balance);
+       for (Upgrade item : upgrades){
+           output.printf("%s\n", item);
+       }
+       System.out.printf("Successfully saved file!\n");
+       output.close();
     }
     
     // Load functionality

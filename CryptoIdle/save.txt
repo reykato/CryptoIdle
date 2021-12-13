@@ -1,8 +1,8 @@
-1111111111111
+1639429097532
 110000.00
-1.07,100,5,1,Basic Mining Rig
-1.07,200,5,1,Basic Mining Rig
-1.07,300,5,1,Basic Mining Rig
-1.07,400,5,1,Basic Mining Rig
-1.07,500,5,1,Basic Mining Rig
-1.07,600,5,1,Basic Mining Rig
+1.07,100.00,5.00,1,Basic Mining Rig
+1.07,200.00,5.00,1,Basic Mining Rig
+1.07,300.00,5.00,1,Basic Mining Rig
+1.07,400.00,5.00,1,Basic Mining Rig
+1.07,500.00,5.00,1,Basic Mining Rig
+1.07,600.00,5.00,1,Basic Mining Rig
