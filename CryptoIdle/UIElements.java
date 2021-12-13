@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+//package cryptoidle;
 import java.awt.GridLayout;
 import java.util.*;
 import javax.swing.JFrame;
@@ -48,9 +48,17 @@ public class UIElements extends JFrame {
         ActionListener taskPerformer = new ActionListener() {
             @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.invalidate();
-                    frame.validate();
-                    frame.repaint();
+                    JLabel bal = new JLabel(Double.toString(getBalance()));
+                    Font dispFont = new Font("Arial", Font.BOLD, 30);
+                    bal.setFont(dispFont);
+                    bal.setHorizontalAlignment(JLabel.CENTER);
+                    frame.getContentPane().removeAll();
+                    frame.add(bal);
+                    for (var upgrade : upgdArr) {
+                        frame.getContentPane().add(drawUpgrade(upgrade));
+                    }
+                    frame.getContentPane().revalidate();
+                    frame.getContentPane().repaint();
                     System.out.println("updated");
             }
         };
@@ -82,7 +90,7 @@ public class UIElements extends JFrame {
         nameL.setBounds(84, 4, 240, 25);
         
         buyButton = new JButton("Buy");
-        buyButton.setBounds(4, 4, 70, 50);
+        buyButton.setBounds(4, 4, 70, 56);
         buyButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 System.out.println("button pressed");
@@ -106,7 +114,7 @@ public class UIElements extends JFrame {
         revL.setBounds(4, 34, 50, 25);
         */
         // cost label
-        cost = new JLabel(Double.toString(upgrade.getCost()));
+        cost = new JLabel("(" + upgrade.getQuantity() +")  "+Double.toString(upgrade.getCost()));
         cost.setFont(f);
         cost.setBounds(84, 34, 240, 25);
         
@@ -117,7 +125,9 @@ public class UIElements extends JFrame {
         return p;        
     }
 
-
+    public void calculateBalance() {
+        //askjdflajskdlfs
+    }
 }
 
 
