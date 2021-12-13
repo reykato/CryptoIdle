@@ -29,6 +29,7 @@ public class CryptoIdle {
             upgdArr[5] = new Upgrade(1.07, 200000, 1000, 0, "Mining Warehouse");
         }
         catch (NumberFormatException e){
+            System.out.printf("Error! Save file corrupted! Please check your save file for correct formatting.\nDeleting the save file will generate a new one for you.\n");
             e.printStackTrace();
         }
         

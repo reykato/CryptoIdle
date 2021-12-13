@@ -19,6 +19,8 @@ import javax.swing.SwingUtilities;
 public class UIElements extends JFrame {
     Upgrade[] upgdArr = new Upgrade[6];
     double balance;
+    private final int INTERVAL = 100;
+    private final int TPS = 1000 / INTERVAL;
     
     public UIElements(Upgrade[] upgdArr, double balance) {
         super();
@@ -48,6 +50,10 @@ public class UIElements extends JFrame {
         ActionListener taskPerformer = new ActionListener() {
             @Override
                 public void actionPerformed(ActionEvent e) {
+                    calculateBalance();
+                    balance *= 100;
+                    balance = Math.round(balance);
+                    balance /= 100.0;
                     JLabel bal = new JLabel(Double.toString(getBalance()));
                     Font dispFont = new Font("Arial", Font.BOLD, 30);
                     bal.setFont(dispFont);
@@ -59,10 +65,10 @@ public class UIElements extends JFrame {
                     }
                     frame.getContentPane().revalidate();
                     frame.getContentPane().repaint();
-                    //System.out.println("updated");
+                    System.out.println("updated");
             }
         };
-        new Timer(100, taskPerformer).start();
+        new Timer(INTERVAL, taskPerformer).start();
     }
     
     public double getBalance() {
@@ -126,7 +132,11 @@ public class UIElements extends JFrame {
     }
 
     public void calculateBalance() {
-        //askjdflajskdlfs
+        double totalRev = 0;
+        for (Upgrade item : upgdArr) {
+            totalRev += item.getRev();
+        }
+        balance += totalRev / (double)TPS;
     }
 }
 

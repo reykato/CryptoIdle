@@ -41,7 +41,7 @@ public class Upgrade {
     }
     
     public double getRev(){
-        return revenue;
+        return (revenue * amtOwned);
     }  
     public String getName() {
         return name;
