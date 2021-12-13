@@ -9,45 +9,66 @@ Upgrades class with constructor
 import java.util.*;
 
 public class Upgrade {
+    // Mult is the multiplier for calculating cost of next unit
+    // Revenue is $/sec per unit
     private final double mult, revenue;
-    private double basePrice;
+    // Current price of next unit
+    private double price;
+    // Total units owned
     private int amtOwned;
+    // Name for UI
     private final String name;    
     
-    public Upgrade(double mult, double basePrice, double revenue, int amtOwned, String name) {
+    // Assign all values to instance variables
+    public Upgrade(double mult, double price, double revenue, int amtOwned, String name) {
         this.mult = mult;
-        this.basePrice = basePrice;
+        this.price = price;
         this.revenue = revenue;
         this.amtOwned = amtOwned;
         this.name = name;
     }
 
     
+    // Calculates if the user can buy an upgrade (returns amount to subtract from balance)
     public double buy(double balance){
-        double cost = basePrice;
-        if (balance >= cost){
+        if (balance >= price){
             amtOwned++;
-            basePrice *= mult;
+            double cost = price;
+            price *= mult;
             // Rounding hack (2 decimal places)
-            basePrice *= 100;
-            basePrice = Math.round(basePrice);
-            basePrice /= 100.0;
+            price *= 100;
+            price = Math.round(price);
+            price /= 100.0;
+            // Subtract price from balance
             return cost;
         }
+        // No purchase made
         return 0;
     }
+    
+    
+    // Get methods
+    
+    public double getCost() {
+        return price;
+    }
+    
+    // Represents total revenue of all units
+    public double getRev(){
+        return (revenue * amtOwned);
+    }
+    
     public int getQuantity(){
         return amtOwned;
     }
     
-    public double getRev(){
-        return (revenue * amtOwned);
-    }  
     public String getName() {
         return name;
     }
-    public double getCost() {
-        return basePrice;
+    
+    @Override
+    public String toString(){
+        return String.format("%f,%f,%f,%d,%s", mult, revenue, price, amtOwned, name);
     }
     
 }
