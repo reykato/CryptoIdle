@@ -6,22 +6,21 @@ Crypto Idle
 Main class 
  */
 
+package cryptoidle;
 import java.awt.*;
 import javax.swing.JFrame;
 
 public class CryptoIdle {
     public static void main(String[] args) {
-        double balance = 1000000;
-        JFrame frame = new JFrame("test");
-        frame.setSize(1000, 700);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new GridLayout(5,5));
-        frame.setVisible(true);
-        // create new upgrade named
-        Upgrade basicMiningRig = new Upgrade(1.07, 100, 5, 1, "Basic Mining Rig");
+        double balance = 1000;
         
-        frame.getContentPane().add(basicMiningRig.drawUpgrade());
-        basicMiningRig.buy(balance, 10);
-        basicMiningRig.drawUpgrade();
+        Upgrade[] upgdArr = new Upgrade[6];
+        upgdArr[0] = new Upgrade(1.07, 10, 1, 0, "Mediocre Mining Rig");
+        upgdArr[1] = new Upgrade(1.07, 180, 5, 0, "Basic Mining Rig");
+        upgdArr[2] = new Upgrade(1.07, 2600, 15, 0, "Advanced Mining Rig");
+        upgdArr[3] = new Upgrade(1.07, 19800, 50, 0, "Mining Apartment");
+        upgdArr[4] = new Upgrade(1.07, 69000, 200, 0, "Mining Facility");
+        upgdArr[5] = new Upgrade(1.07, 200000, 1000, 0, "Mining Warehouse");
+        UIElements a = new UIElements(upgdArr, balance);
     }
 }
