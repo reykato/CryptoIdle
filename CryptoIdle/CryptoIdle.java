@@ -18,6 +18,7 @@ public class CryptoIdle {
         try{
             SaveHandler load = new SaveHandler();
             upgdArr = load.getUpgrades();
+            balance = load.getBalance();
         }
         catch (IOException e){
             upgdArr[0] = new Upgrade(1.07, 10, 1, 0, "Mediocre Mining Rig");
