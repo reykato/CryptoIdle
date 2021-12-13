@@ -55,7 +55,7 @@ public class SaveHandler{
         return timeInMillis;
     }
     
-    public String getUpgrade(int i){
-        return String.format("Amount owned: %d\nRevenue: %.2f\n", upgrades[i].getQuantity(), upgrades[i].getRev()); 
+    public Upgrade[] getUpgrades(){
+        return upgrades;
     }
 }
