@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cryptoidle;
 
 import java.awt.GridLayout;
 import java.util.*;
@@ -88,7 +87,11 @@ public class UIElements extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("button pressed");
                 
-                balance -= upgrade.buy(balance, 1);
+                balance -= upgrade.buy(balance);
+                // Rounding hack (2 decimal places)
+                balance *= 100;
+                balance = Math.round(balance);
+                balance /= 100.0;
                 System.out.println(balance);
                 System.out.println(upgrade.getCost());
             }

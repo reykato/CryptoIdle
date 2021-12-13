@@ -6,10 +6,11 @@ Crypto Idle
 Upgrades class with constructor
  */
 
-package cryptoidle;
+import java.util.*;
 
 public class Upgrade {
-    private final double mult, basePrice, revenue;
+    private final double mult, revenue;
+    private double basePrice;
     private int amtOwned;
     private final String name;    
     
@@ -20,22 +21,17 @@ public class Upgrade {
         this.amtOwned = amtOwned;
         this.name = name;
     }
+
     
-    
-    // Methods involving increasing costs
-    
-    public double calcCost(int quantity) {
-        double totalCost = basePrice;
-        for (int i = 1; i <= quantity; i++){
-            totalCost += basePrice * (Math.pow(mult, (amtOwned + i)));
-        }
-        return totalCost;
-    }
-    
-    public double buy(double balance, int quantity){
-        double cost = calcCost(amtOwned + quantity);
+    public double buy(double balance){
+        double cost = basePrice;
         if (balance >= cost){
-            amtOwned += quantity;
+            amtOwned++;
+            basePrice *= mult;
+            // Rounding hack (2 decimal places)
+            basePrice *= 100;
+            basePrice = Math.round(basePrice);
+            basePrice /= 100.0;
             return cost;
         }
         return 0;
@@ -51,7 +47,7 @@ public class Upgrade {
         return name;
     }
     public double getCost() {
-        return calcCost(amtOwned);
+        return basePrice;
     }
     
 }

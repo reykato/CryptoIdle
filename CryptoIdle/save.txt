@@ -1,5 +1,5 @@
 1111111111111
-11.00
+110000.00
 1.07,100,5,1,Basic Mining Rig
 1.07,200,5,1,Basic Mining Rig
 1.07,300,5,1,Basic Mining Rig

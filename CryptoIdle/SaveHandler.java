@@ -8,13 +8,14 @@ public class SaveHandler{
     private final int TOTAL_TERMS = 8;
     
     private long timeInMillis;
-    private Upgrade upgrades[] = new Upgrade[(TOTAL_TERMS-2)];
     private double balance;
+    private Upgrade upgrades[] = new Upgrade[(TOTAL_TERMS-2)];
     private File save = new File("save.txt");
     
     
     public SaveHandler(Upgrade upgrades[], double balance){
        this.upgrades = upgrades;
+       this.balance = balance;
     }
     
     public SaveHandler() throws IOException, NumberFormatException{
