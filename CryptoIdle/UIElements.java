@@ -59,10 +59,10 @@ public class UIElements extends JFrame {
                     }
                     frame.getContentPane().revalidate();
                     frame.getContentPane().repaint();
-                    System.out.println("updated");
+                    //System.out.println("updated");
             }
         };
-        new Timer(500, taskPerformer).start();
+        new Timer(100, taskPerformer).start();
     }
     
     public double getBalance() {
