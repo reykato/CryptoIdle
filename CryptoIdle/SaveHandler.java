@@ -44,25 +44,26 @@ public class SaveHandler{
         // Parse upgrades
         for (int i = 2; i < TOTAL_TERMS; i++){
             upgrades[i-2] = parseUpgrade(terms[i]);
+            System.out.printf("Upgrade %d: %s\n", (i-2), upgrades[i-2]);
         }
     }
     
     
     private Upgrade parseUpgrade(String saveFormat){
         // Variables for each upgrade
-        double mult, basePrice, revenue;
+        double mult, price, revenue;
         int amtOwned;
         String name;
         // Save file attributes are delimited by a comma
         String numbers[] = saveFormat.split(",");
         // Parse upgrade attributes
         mult = Double.parseDouble(numbers[0]);
-        basePrice = Double.parseDouble(numbers[1]);
+        price = Double.parseDouble(numbers[1]);
         revenue = Double.parseDouble(numbers[2]);
         amtOwned = (int)Double.parseDouble(numbers[3]);
         name = numbers[4];
         // Return the upgrade represented by this string
-        return new Upgrade(mult, basePrice, revenue, amtOwned, name);
+        return new Upgrade(mult, price, revenue, amtOwned, name);
     }
     
     

@@ -46,6 +46,8 @@ public class CryptoIdle {
         // Takes loaded in values and displays in UI
         UIElements a = new UIElements(upgdArr, balance);
         
+        
+        
         // TODO: Add the following code to a window listener upon close
         try {
             SaveHandler save = new SaveHandler(upgdArr, balance);

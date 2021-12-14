@@ -68,7 +68,7 @@ public class Upgrade {
     
     @Override
     public String toString(){
-        return String.format("%.2f,%.2f,%.2f,%d,%s", mult, revenue, price, amtOwned, name);
+        return String.format("%.2f,%.2f,%.2f,%d,%s", mult, price, revenue, amtOwned, name);
     }
     
 }
