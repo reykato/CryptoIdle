@@ -10,30 +10,38 @@ import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
-
 public class UIElements extends JFrame {
     // Array of upgrades that all math is done on
     Upgrade[] upgdArr = new Upgrade[6];
     // Balance of player
     double balance, CPS = 0;
+    boolean isNewSave;
     // Tweaked interval to a value that felt good
-    private final int INTERVAL = 40;
+    private final int INTERVAL = 60;
     private final int TPS = 1000 / INTERVAL;
-    Font dispFont = new Font("Arial", Font.BOLD, 30);
-    Font subFont = new Font("Arial", Font.BOLD, 20);
+    Font dispFont = new Font("Display", Font.BOLD, 30);
+    Font subFont = new Font("Display", Font.BOLD, 20);
     
-    public UIElements(Upgrade[] upgdArr, double balance) {
+    public UIElements(Upgrade[] upgdArr, double oldBalance, double balance, boolean isNewSave) {
         // Initialize window and get all variables in place
         super();
+        this.isNewSave = isNewSave;
         this.upgdArr = upgdArr;
         this.balance = balance;
-        run();
+        if (isNewSave) {
+            run();
+        } else {
+            run();
+            returnPane(balance - oldBalance);
+        }
+        
     }
     
     public void run() {
         // Frame attributes
         JFrame frame = new JFrame("CryptoIdle");
-        frame.setSize(366, 760);
+        frame.setSize(317, 750);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -46,12 +54,12 @@ public class UIElements extends JFrame {
         
         
         // Balance label
-        JLabel bal = new JLabel(String.format("%.2f", this.balance));
+        JLabel bal = new JLabel(String.format("$%.2f", this.balance));
         bal.setFont(dispFont);
         bal.setHorizontalAlignment(JLabel.CENTER);
         frame.add(bal);
         
-        JLabel cps = new JLabel(String.format("%.2f", this.CPS));
+        JLabel cps = new JLabel(String.format("$%.2f/sec", CPS*TPS));
         cps.setFont(subFont);
         cps.setHorizontalAlignment(JLabel.CENTER);
         frame.add(cps);
@@ -72,14 +80,14 @@ public class UIElements extends JFrame {
                     balance /= 100.0;
                     
                     // Reset balance label
-                    JLabel bal = new JLabel(String.format("%.2f", getBalance()));
+                    JLabel bal = new JLabel(String.format("$%.2f", getBalance()));
                     bal.setFont(dispFont);
                     bal.setHorizontalAlignment(JLabel.CENTER);
                     // Clear frame
                     frame.getContentPane().removeAll();
                     // Add all content panes again
                     frame.add(bal);
-                    JLabel cps = new JLabel(String.format("Per second: $%.2f", CPS*TPS));
+                    JLabel cps = new JLabel(String.format("$%.2f/sec", CPS*TPS));
                     cps.setFont(subFont);
                     cps.setHorizontalAlignment(JLabel.CENTER);
                     frame.add(cps);
@@ -93,6 +101,10 @@ public class UIElements extends JFrame {
         };
         // Run the tick handler again after INTERVAL milliseconds
         new Timer(INTERVAL, taskPerformer).start();
+    }
+    
+    public void returnPane(double profit) {
+        JOptionPane.showMessageDialog(null, String.format("While you were away, you earned $%.2f", profit), "Welcome Back!", JOptionPane.INFORMATION_MESSAGE);
     }
     
     // Adds the revenue from most recent tick
