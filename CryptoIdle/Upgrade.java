@@ -58,6 +58,10 @@ public class Upgrade {
         return (revenue * amtOwned);
     }
     
+    public double getBaseRev(){
+        return (revenue);
+    }
+    
     public int getQuantity(){
         return amtOwned;
     }
