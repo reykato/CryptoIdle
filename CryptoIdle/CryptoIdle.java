@@ -22,6 +22,12 @@ public class CryptoIdle {
             SaveHandler load = new SaveHandler();
             upgdArr = load.getUpgrades();
             balance = load.getBalance();
+            double offlineRevenue = 0;
+            long currentTime = System.currentTimeMillis();
+            for (Upgrade item : upgdArr) {
+                offlineRevenue += (item.getRev() * (int)((currentTime - load.getTimeStamp()) / 1000.0));
+            }
+            balance += offlineRevenue;
             System.out.printf("Successfully loaded save!\n");
         }
         catch (IOException e){
@@ -45,16 +51,5 @@ public class CryptoIdle {
         
         // Takes loaded in values and displays in UI
         UIElements a = new UIElements(upgdArr, balance);
-        
-        
-        
-        // TODO: Add the following code to a window listener upon close
-        try {
-            SaveHandler save = new SaveHandler(upgdArr, balance);
-            System.out.printf("Successfully implemented save\n");
-        }
-        catch (Exception e){
-            System.out.printf("Error! Save file could not be created! Please make sure that folder is not read-only.\n");
-        }
     }
 }

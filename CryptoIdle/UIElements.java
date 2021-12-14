@@ -34,7 +34,13 @@ public class UIElements extends JFrame {
         // Frame attributes
         JFrame frame = new JFrame("CryptoIdle");
         frame.setSize(366, 760);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                exitProcedure();
+            }
+        });
         frame.getContentPane().setLayout(new GridLayout(8,0));
         frame.setVisible(true);
         
@@ -107,6 +113,21 @@ public class UIElements extends JFrame {
     
     public double getBalance() {
         return balance;
+    }
+    
+    
+    
+    public void exitProcedure(){
+        try {
+            SaveHandler save = new SaveHandler(upgdArr, balance);
+            System.out.printf("Successfully implemented save\n");
+        }
+        catch (Exception e){
+            System.out.printf("Error! Save file could not be created! Please make sure that folder is not read-only.\n");
+        }
+        finally {
+            System.exit(0);
+        }
     }
         
     

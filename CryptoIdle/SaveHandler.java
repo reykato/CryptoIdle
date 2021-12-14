@@ -44,7 +44,6 @@ public class SaveHandler{
         // Parse upgrades
         for (int i = 2; i < TOTAL_TERMS; i++){
             upgrades[i-2] = parseUpgrade(terms[i]);
-            System.out.printf("Upgrade %d: %s\n", (i-2), upgrades[i-2]);
         }
     }
     

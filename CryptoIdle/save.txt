@@ -1,7 +1,7 @@
-1639514557612
-1000.00
-1.07,10.00,1.00,0,Mediocre Mining Rig
-1.07,180.00,5.00,0,Basic Mining Rig
+1639518962710
+20527.77
+1.07,81.48,1.00,31,Mediocre Mining Rig
+1.07,235.95,5.00,4,Basic Mining Rig
 1.07,2600.00,15.00,0,Advanced Mining Rig
 1.07,19800.00,50.00,0,Mining Apartment
 1.07,69000.00,200.00,0,Mining Facility
