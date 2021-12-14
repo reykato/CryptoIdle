@@ -29,11 +29,11 @@ public class CryptoIdle {
             System.out.printf("No save found, creating new save.\n");
             balance = 1000;
             upgdArr[0] = new Upgrade(1.07, 10, 1, 0, "Mediocre Mining Rig");
-            upgdArr[1] = new Upgrade(1.07, 200, 5, 0, "Basic Mining Rig");
-            upgdArr[2] = new Upgrade(1.07, 5000, 25, 0, "Advanced Mining Rig");
-            upgdArr[3] = new Upgrade(1.07, 50000, 100, 0, "Mining Apartment");
-            upgdArr[4] = new Upgrade(1.07, 100000, 250, 0, "Mining Facility");
-            upgdArr[5] = new Upgrade(1.07, 500000, 1000, 0, "Mining Warehouse");
+            upgdArr[1] = new Upgrade(1.07, 180, 5, 0, "Basic Mining Rig");
+            upgdArr[2] = new Upgrade(1.07, 2600, 15, 0, "Advanced Mining Rig");
+            upgdArr[3] = new Upgrade(1.07, 19800, 50, 0, "Mining Apartment");
+            upgdArr[4] = new Upgrade(1.07, 69000, 200, 0, "Mining Facility");
+            upgdArr[5] = new Upgrade(1.07, 200000, 1000, 0, "Mining Warehouse");
         }
         catch (NumberFormatException e){
             // Error in save file
