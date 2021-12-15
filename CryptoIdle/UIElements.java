@@ -1,6 +1,7 @@
 //package cryptoidle;
 import java.awt.GridLayout;
 import java.util.*;
+import java.io.*;
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.JPanel;
@@ -19,8 +20,14 @@ public class UIElements extends JFrame {
     // Tweaked interval to a value that felt good
     private final int INTERVAL = 60;
     private final int TPS = 1000 / INTERVAL;
+    private final String fontName = "Bebas Neue";
+    // Default font sizes
     Font dispFont = new Font("Display", Font.BOLD, 30);
     Font subFont = new Font("Display", Font.BOLD, 20);
+    // Upgrade fonts
+    Font display = new Font("Display", Font.BOLD, 20);
+    Font rev = new Font("Display", Font.PLAIN, 16);
+    ImageIcon icon = new ImageIcon("bitcoin.png");
     
     public UIElements(Upgrade[] upgdArr, double oldBalance, double balance, boolean isNewSave) {
         // Initialize window and get all variables in place
@@ -28,19 +35,30 @@ public class UIElements extends JFrame {
         this.isNewSave = isNewSave;
         this.upgdArr = upgdArr;
         this.balance = balance;
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("BebasNeue-Regular.ttf")));
+            dispFont = new Font(fontName, Font.BOLD, 30);
+            subFont = new Font(fontName, Font.BOLD, 20);
+            display = new Font(fontName, Font.BOLD, 20);
+            rev = new Font(fontName, Font.PLAIN, 16);
+            } 
+        catch (IOException|FontFormatException e) {
+            
+        }
         if (isNewSave) {
             run();
         } else {
             run();
             returnPane(balance - oldBalance);
         }
-        
     }
     
     public void run() {
         // Frame attributes
         JFrame frame = new JFrame("CryptoIdle");
         frame.setSize(317, 750);
+        frame.setIconImage(icon.getImage());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
@@ -147,8 +165,6 @@ public class UIElements extends JFrame {
     // Creates Panels for each upgrade
     public JPanel drawUpgrade(Upgrade upgrade) {    
         // Panel boilerplate
-        Font display = new Font("Display", Font.BOLD, 20);
-        Font rev = new Font("Display", Font.PLAIN, 16);
         MyPanel p = new MyPanel();
         p.setLayout(null);
         p.setSize(300, 100);

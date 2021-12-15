@@ -1,0 +1,8 @@
+1639529214517
+416508.13
+1.07,13028.17,1.00,106,Mediocre Mining Rig
+1.07,13672.71,5.50,64,Basic Mining Rig
+1.07,36386.41,25.65,39,Advanced Mining Rig
+1.07,81983.13,67.70,21,Mining Apartment
+1.07,177918.89,207.85,14,Mining Facility
+1.07,1329767.65,769.95,28,Mining Warehouse
